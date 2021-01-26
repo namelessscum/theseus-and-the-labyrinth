@@ -1376,6 +1376,7 @@ function random_song_selector () {
     } else if (thesong_selector <= 40 && thesong_selector >= 21) {
         game.showLongText("NOW PLAYING: Pure Gold by half alive", DialogLayout.Bottom)
         puregold = 1
+        pause(100)
     } else if (thesong_selector <= 60 && thesong_selector >= 41) {
         game.showLongText("NOW PLAYING: Modern Day Cain by IDKHBTFM", DialogLayout.Bottom)
         mooderndaycain = 1
