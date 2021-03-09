@@ -289,6 +289,9 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.minotaur, function (sprite, othe
         game.over(true, effects.confetti)
     }
 })
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+	
+})
 function theseus_of_athens () {
     music.baDing.loop()
     pause(5000)
@@ -351,6 +354,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`tile19`, function (sprite, lo
         `, SpriteKind.minotaur)
     MINOTAUR.follow(mySprite, 85)
     minotaur_life_dialog_function()
+    minotaurGUN()
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`tile6`, function (sprite, location) {
     music.baDing.play()
@@ -363,6 +367,88 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`tile6`, function (sprite, loc
 info.onLifeZero(function () {
     game.over(false)
 })
+function minotaurGUN () {
+    pause(5000)
+    while (true) {
+        for (let index = 0; index < 4; index++) {
+            projectile = sprites.createProjectileFromSprite(img`
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . 9 . . 9 . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . 9 . . . 9 9 . . . 9 . . . 
+                . . . . . . 9 1 1 9 . . . . . . 
+                . . . . . . 9 1 1 9 . . . . . . 
+                . . . 9 . . . 9 9 . . . 9 . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . 9 . . 9 . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                `, MINOTAUR, 50, 50)
+            pause(100)
+            projectile = sprites.createProjectileFromSprite(img`
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . 9 . . 9 . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . 9 . . . 9 9 . . . 9 . . . 
+                . . . . . . 9 1 1 9 . . . . . . 
+                . . . . . . 9 1 1 9 . . . . . . 
+                . . . 9 . . . 9 9 . . . 9 . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . 9 . . 9 . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                `, MINOTAUR, -50, -50)
+            pause(100)
+            projectile = sprites.createProjectileFromSprite(img`
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . 9 . . 9 . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . 9 . . . 9 9 . . . 9 . . . 
+                . . . . . . 9 1 1 9 . . . . . . 
+                . . . . . . 9 1 1 9 . . . . . . 
+                . . . 9 . . . 9 9 . . . 9 . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . 9 . . 9 . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                `, MINOTAUR, -50, 50)
+            pause(100)
+            projectile = sprites.createProjectileFromSprite(img`
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . 9 . . 9 . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . 9 . . . 9 9 . . . 9 . . . 
+                . . . . . . 9 1 1 9 . . . . . . 
+                . . . . . . 9 1 1 9 . . . . . . 
+                . . . 9 . . . 9 9 . . . 9 . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . 9 . . 9 . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                `, MINOTAUR, 50, -50)
+        }
+    }
+}
 function athena () {
     scene.setBackgroundImage(img`
         5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555
@@ -1381,8 +1467,8 @@ function random_song_selector () {
         game.showLongText("NOW PLAYING: Modern Day Cain by IDKHBTFM", DialogLayout.Bottom)
         mooderndaycain = 1
     } else if (thesong_selector <= 80 && thesong_selector >= 61) {
-        game.showLongText("NOW PLAYING: Collar Full by Panic! At The Disco", DialogLayout.Bottom)
-        collarfull = 1
+        game.showLongText("NOW PLAYING: Ode To Sleep by Twenty One Pilots", DialogLayout.Bottom)
+        odetosleep = 1
     } else if (thesong_selector <= 100 && thesong_selector >= 81) {
         game.showLongText("NOW PLAYING: Pompeii by Bastille", DialogLayout.Bottom)
         pompeii = 1
@@ -1392,13 +1478,15 @@ function random_song_selector () {
         rick = 1
     }
 }
+let projectile2: Sprite = null
 let rick = 0
 let pompeii = 0
-let collarfull = 0
+let odetosleep = 0
 let mooderndaycain = 0
 let puregold = 0
 let cruelAngel = 0
 let thesong_selector = 0
+let projectile: Sprite = null
 let level = 0
 let MINOTAUR: Sprite = null
 let minotaur_lifes = 0
@@ -1478,101 +1566,101 @@ for (let value of tiles.getTilesByType(assets.tile`tile6`)) {
         . . . 8 6 6 6 6 6 6 6 8 . . . 
         . . . . 8 8 8 8 8 8 8 . . . . 
         `,img`
-        . . . . . . . 6 6 6 6 6 . . . 
-        . . . . . . 6 1 1 1 1 1 6 . . 
-        . . . . . 6 1 1 9 9 9 9 1 6 . 
-        . . . . 6 1 1 9 9 9 9 9 9 1 6 
-        . . . 6 1 1 9 9 9 9 9 9 9 9 1 
-        6 . . 6 1 9 9 9 9 6 9 9 9 9 9 
-        6 . . 6 1 9 9 9 6 6 6 9 9 9 9 
-        6 . . 6 1 9 9 9 6 6 6 1 9 9 9 
-        6 . . 8 9 9 9 9 6 6 6 1 9 9 9 
-        8 . . 8 6 9 9 9 9 6 1 9 9 9 6 
-        8 . . 8 6 9 9 9 9 1 9 9 9 9 6 
-        8 . . . 8 6 9 9 9 9 9 9 9 6 8 
-        . . . . . 8 6 9 9 9 9 9 6 8 . 
-        . . . . . . 8 6 6 6 6 6 8 . . 
-        . . . . . . . 8 8 8 8 8 . . . 
+        . . . . . 6 6 6 6 6 . . . . . 
+        . . . . 6 1 1 1 1 1 6 . . . . 
+        . . . 6 1 1 9 9 9 9 1 6 . . . 
+        . . 6 1 1 9 9 9 9 9 9 1 6 . . 
+        . 6 1 1 9 9 9 9 9 9 9 9 1 6 . 
+        . 6 1 9 9 9 9 6 9 9 9 9 9 6 . 
+        . 6 1 9 9 9 6 6 6 9 9 9 9 6 . 
+        . 6 1 9 9 9 6 6 6 1 9 9 9 6 . 
+        . 8 9 9 9 9 6 6 6 1 9 9 9 8 . 
+        . 8 6 9 9 9 9 6 1 9 9 9 9 8 . 
+        . 8 6 9 9 9 9 1 9 9 9 9 9 8 . 
+        . . 8 6 9 9 9 9 9 9 9 9 8 . . 
+        . . . 8 6 9 9 9 9 9 9 8 . . . 
+        . . . . 8 6 6 6 6 6 8 . . . . 
+        . . . . . 8 8 8 8 8 . . . . . 
         `,img`
-        . . . . . . . . . . 6 6 6 . . 
-        . . . . . . . . . 6 1 9 9 6 . 
-        . . . . . . . . 6 1 9 9 9 9 6 
-        . . . . . . . . 6 1 9 9 9 9 6 
-        . . . . . . . 6 1 9 9 9 9 9 9 
-        6 . . . . . . 6 1 9 9 6 9 9 9 
-        6 . . . . . . 6 1 9 9 6 9 9 9 
-        6 . . . . . . 6 9 9 9 6 1 9 9 
-        6 . . . . . . 8 6 9 9 6 1 9 6 
-        8 . . . . . . 8 6 9 9 6 1 9 6 
-        8 . . . . . . 8 6 9 9 1 9 9 6 
-        8 . . . . . . . 8 6 9 9 9 6 8 
-        . . . . . . . . 8 6 9 9 9 6 8 
-        . . . . . . . . . 8 6 6 6 8 . 
-        . . . . . . . . . . 8 8 8 . . 
+        . . . . . . 6 6 6 . . . . . . 
+        . . . . . 6 1 9 9 6 . . . . . 
+        . . . . 6 1 9 9 9 9 6 . . . . 
+        . . . . 6 1 9 9 9 9 6 . . . . 
+        . . . 6 1 9 9 9 9 9 9 6 . . . 
+        . . . 6 1 9 9 6 9 9 9 6 . . . 
+        . . . 6 1 9 9 6 9 9 9 6 . . . 
+        . . . 6 9 9 9 6 1 9 9 6 . . . 
+        . . . 8 6 9 9 6 1 9 6 8 . . . 
+        . . . 8 6 9 9 6 1 9 6 8 . . . 
+        . . . 8 6 9 9 1 9 9 6 8 . . . 
+        . . . . 8 6 9 9 9 6 8 . . . . 
+        . . . . 8 6 9 9 9 6 8 . . . . 
+        . . . . . 8 6 6 6 8 . . . . . 
+        . . . . . . 8 8 8 . . . . . . 
         `,img`
-        . . . . . . . . . . . . . 6 . 
-        . . . . . . . . . . . . 6 1 6 
-        . . . . . . . . . . . . 6 9 6 
-        . . . . . . . . . . . . 6 9 6 
-        . . . . . . . . . . . . 6 9 6 
-        . . . . . . . . . . . . 6 9 6 
-        . . . . . . . . . . . . 6 9 6 
-        . . . . . . . . . . . . 6 9 6 
-        . . . . . . . . . . . . 8 6 8 
-        . . . . . . . . . . . . 8 6 8 
-        . . . . . . . . . . . . 8 6 8 
-        . . . . . . . . . . . . 8 6 8 
-        . . . . . . . . . . . . 8 6 8 
-        . . . . . . . . . . . . 8 6 8 
-        . . . . . . . . . . . . . 8 . 
+        . . . . . . . 6 . . . . . . . 
+        . . . . . . 6 1 6 . . . . . . 
+        . . . . . . 6 9 6 . . . . . . 
+        . . . . . . 6 9 6 . . . . . . 
+        . . . . . . 6 9 6 . . . . . . 
+        . . . . . . 6 9 6 . . . . . . 
+        . . . . . . 6 9 6 . . . . . . 
+        . . . . . . 6 9 6 . . . . . . 
+        . . . . . . 8 6 8 . . . . . . 
+        . . . . . . 8 6 8 . . . . . . 
+        . . . . . . 8 6 8 . . . . . . 
+        . . . . . . 8 6 8 . . . . . . 
+        . . . . . . 8 6 8 . . . . . . 
+        . . . . . . 8 6 8 . . . . . . 
+        . . . . . . . 8 . . . . . . . 
         `,img`
-        . . . . . . . . . . . . . . 6 
-        6 6 . . . . . . . . . . . 6 1 
-        9 9 6 . . . . . . . . . 6 1 9 
-        9 9 9 6 . . . . . . . . 6 1 9 
-        9 9 9 6 . . . . . . . 6 1 9 9 
-        9 9 9 9 6 . . . . . . 6 1 9 9 
-        6 9 9 9 6 . . . . . . 6 1 9 9 
-        6 9 9 9 6 . . . . . . 6 9 9 9 
-        6 1 9 9 6 . . . . . . 8 6 9 9 
-        6 1 9 6 8 . . . . . . 8 6 9 9 
-        6 1 9 6 8 . . . . . . 8 6 9 9 
-        1 9 9 6 8 . . . . . . . 8 6 9 
-        9 9 6 8 . . . . . . . . 8 6 9 
-        9 9 6 8 . . . . . . . . . 8 6 
-        6 6 8 . . . . . . . . . . . . 
+        . . . . . . 6 6 6 . . . . . . 
+        . . . . . 6 1 9 9 6 . . . . . 
+        . . . . 6 1 9 9 9 9 6 . . . . 
+        . . . . 6 1 9 9 9 9 6 . . . . 
+        . . . 6 1 9 9 9 9 9 9 6 . . . 
+        . . . 6 1 9 9 6 9 9 9 6 . . . 
+        . . . 6 1 9 9 6 9 9 9 6 . . . 
+        . . . 6 9 9 9 6 1 9 9 6 . . . 
+        . . . 8 6 9 9 6 1 9 6 8 . . . 
+        . . . 8 6 9 9 6 1 9 6 8 . . . 
+        . . . 8 6 9 9 1 9 9 6 8 . . . 
+        . . . . 8 6 9 9 9 6 8 . . . . 
+        . . . . 8 6 9 9 9 6 8 . . . . 
+        . . . . . 8 6 6 6 8 . . . . . 
+        . . . . . . 8 8 8 . . . . . . 
         `,img`
-        8 8 8 . . . . . . . . . . . . 
-        6 6 6 6 6 . . . . . . . . . 6 
-        1 1 1 1 1 6 . . . . . . . 6 1 
-        1 9 9 9 9 1 6 . . . . . 6 1 1 
-        9 9 9 9 9 9 1 6 . . . 6 1 1 9 
-        9 9 9 9 9 9 9 1 6 . . 6 1 9 9 
-        9 9 6 9 9 9 9 9 6 . . 6 1 9 9 
-        9 6 6 6 9 9 9 9 6 . . 6 1 9 9 
-        9 6 6 6 1 9 9 9 6 . . 8 9 9 9 
-        9 6 6 6 1 9 9 9 8 . . 8 6 9 9 
-        9 9 6 1 9 9 9 6 8 . . 8 6 9 9 
-        9 9 1 9 9 9 9 6 8 . . . 8 6 9 
-        9 9 9 9 9 9 6 8 . . . . . 8 6 
-        9 9 9 9 9 6 8 . . . . . . . 8 
-        6 6 6 6 6 8 . . . . . . . . . 
+        . . . . . 6 6 6 6 6 . . . . . 
+        . . . . 6 1 1 1 1 1 6 . . . . 
+        . . . 6 1 1 9 9 9 9 1 6 . . . 
+        . . 6 1 1 9 9 9 9 9 9 1 6 . . 
+        . 6 1 1 9 9 9 9 9 9 9 9 1 6 . 
+        . 6 1 9 9 9 9 6 9 9 9 9 9 6 . 
+        . 6 1 9 9 9 6 6 6 9 9 9 9 6 . 
+        . 6 1 9 9 9 6 6 6 1 9 9 9 6 . 
+        . 8 9 9 9 9 6 6 6 1 9 9 9 8 . 
+        . 8 6 9 9 9 9 6 1 9 9 9 9 8 . 
+        . 8 6 9 9 9 9 1 9 9 9 9 9 8 . 
+        . . 8 6 9 9 9 9 9 9 9 9 8 . . 
+        . . . 8 6 9 9 9 9 9 9 8 . . . 
+        . . . . 8 6 6 6 6 6 8 . . . . 
+        . . . . . 8 8 8 8 8 . . . . . 
         `,img`
-        . 8 8 8 8 8 . . . . . . . . . 
-        . 6 6 6 6 6 6 6 . . . . . . . 
-        6 1 1 1 1 1 1 1 6 . . . . . 6 
-        1 1 9 9 9 9 9 9 1 6 . . . 6 1 
-        1 9 9 9 9 9 9 9 9 1 6 . 6 1 1 
-        9 9 9 9 9 9 9 9 9 9 1 6 6 1 9 
-        9 9 9 6 6 6 9 9 9 9 9 6 6 1 9 
-        9 9 6 6 6 6 6 9 9 9 9 6 6 1 9 
-        9 9 6 6 6 6 6 1 9 9 9 6 8 9 9 
-        9 9 6 6 6 6 6 1 9 9 9 8 8 6 9 
-        9 9 9 6 6 6 1 9 9 9 6 8 8 6 9 
-        9 9 9 9 1 1 9 9 9 9 6 8 . 8 6 
-        9 9 9 9 9 9 9 9 9 6 8 . . . 8 
-        6 9 9 9 9 9 9 9 6 8 . . . . . 
-        8 6 6 6 6 6 6 6 8 . . . . . . 
+        . . . . 6 6 6 6 6 6 6 . . . . 
+        . . . 6 1 1 1 1 1 1 1 6 . . . 
+        . . 6 1 1 9 9 9 9 9 9 1 6 . . 
+        . 6 1 1 9 9 9 9 9 9 9 9 1 6 . 
+        6 1 1 9 9 9 9 9 9 9 9 9 9 1 6 
+        6 1 9 9 9 9 6 6 6 9 9 9 9 9 6 
+        6 1 9 9 9 6 6 6 6 6 9 9 9 9 6 
+        6 1 9 9 9 6 6 6 6 6 1 9 9 9 6 
+        8 9 9 9 9 6 6 6 6 6 1 9 9 9 8 
+        8 6 9 9 9 9 6 6 6 1 9 9 9 6 8 
+        8 6 9 9 9 9 9 1 1 9 9 9 9 6 8 
+        . 8 6 9 9 9 9 9 9 9 9 9 6 8 . 
+        . . 8 6 9 9 9 9 9 9 9 6 8 . . 
+        . . . 8 6 6 6 6 6 6 6 8 . . . 
+        . . . . 8 8 8 8 8 8 8 . . . . 
         `],
     100,
     true
@@ -1707,20 +1795,20 @@ for (let value of tiles.getTilesByType(assets.tile`tile24`)) {
         . . . . . . 6 8 8 8 8 8 8 . . 
         `,img`
         . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . 
-        . . . . . . 7 7 7 7 . . . . . 
-        . . . . . 7 7 1 7 7 7 . . . . 
-        . . . . . 7 7 7 7 7 7 7 . . . 
-        . . . . . . 7 7 7 7 7 7 . . . 
-        . . . . . . . . . 7 7 6 . . . 
-        . . . . . . . 7 7 7 7 6 . . . 
-        . . . . . . . 7 7 7 6 . . . . 
-        . . . . . . 7 7 7 8 . . . . . 
-        . . . . . . 7 7 7 8 . . . . . 
-        . . . 7 . . 7 7 7 7 6 . . . . 
-        . . 7 7 . . 6 7 7 7 7 7 7 7 7 
-        7 7 7 6 . . 8 6 7 7 7 7 7 7 7 
-        7 7 8 . . . . 8 6 6 6 8 8 8 . 
+        . 7 7 7 7 . . . . . . . . . . 
+        7 7 1 7 7 7 . . . . . . . . . 
+        7 7 7 7 7 7 7 . . . . . . . . 
+        . 7 7 7 7 7 7 . . . . . . . . 
+        . . . . 7 7 6 . . . . . . . . 
+        . . 7 7 7 7 6 . . . . . . . . 
+        . . 7 7 7 6 . . . . . . . . . 
+        . 7 7 7 8 . . . . . . . . . . 
+        . 7 7 7 8 . . . . . . . . . . 
+        . 7 7 7 7 6 . . . . . . . . 7 
+        . 6 7 7 7 7 . . . . . . . 7 7 
+        . 8 6 7 7 7 7 7 7 7 7 7 7 7 6 
+        . . 8 6 6 7 7 7 7 7 7 7 7 6 . 
+        . . . . . 6 6 6 6 6 6 6 6 . . 
         `],
     100,
     true
@@ -1730,6 +1818,158 @@ for (let value of tiles.getTilesByType(assets.tile`tile24`)) {
 characterAnim()
 theRandomSpawn()
 random_song_selector()
+forever(function () {
+    if (level == 11) {
+        pause(5000)
+        for (let index = 0; index < 2; index++) {
+            pause(200)
+            projectile2 = sprites.createProjectileFromSprite(img`
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . 4 . . . . . . . . . . 
+                . . . 4 4 . 4 4 4 4 . . . . . . 
+                . . 4 . 4 4 4 1 1 4 4 . . . . . 
+                . . . 4 4 4 1 1 1 1 4 . . . . . 
+                4 4 . . 4 4 1 1 1 1 4 . . . . . 
+                . . . 4 4 4 4 1 1 4 4 . . . . . 
+                . . 4 4 . . 4 4 4 4 . . . . . . 
+                . . . . 4 4 4 . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                `, MINOTAUR, 50, 0)
+            projectile2 = sprites.createProjectileFromSprite(img`
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . 4 4 4 . . . . 
+                . . . . . . 4 4 4 4 . . 4 4 . . 
+                . . . . . 4 4 1 1 4 4 4 4 . . . 
+                . . . . . 4 1 1 1 1 4 4 . . 4 4 
+                . . . . . 4 1 1 1 1 4 4 4 . . . 
+                . . . . . 4 4 1 1 4 4 4 . 4 . . 
+                . . . . . . 4 4 4 4 . 4 4 . . . 
+                . . . . . . . . . . 4 . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                `, MINOTAUR, -50, 0)
+            projectile2 = sprites.createProjectileFromSprite(img`
+                . . . . . . . . 4 . . . . . . . 
+                . . . . . . . . 4 . . . . . . . 
+                . . . . . . 4 . . . 4 . . . . . 
+                . . . . . 4 . 4 . 4 4 . . . . . 
+                . . . . . 4 4 4 4 4 . 4 . . . . 
+                . . . . 4 . 4 4 4 4 . 4 . . . . 
+                . . . . . 4 4 1 1 4 4 4 . . . . 
+                . . . . . 4 1 1 1 1 4 . . . . . 
+                . . . . . 4 1 1 1 1 4 . . . . . 
+                . . . . . 4 4 1 1 4 4 . . . . . 
+                . . . . . . 4 4 4 4 . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                `, MINOTAUR, 0, 50)
+            projectile2 = sprites.createProjectileFromSprite(img`
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . 4 4 4 4 . . . . . . 
+                . . . . . 4 4 1 1 4 4 . . . . . 
+                . . . . . 4 1 1 1 1 4 . . . . . 
+                . . . . . 4 1 1 1 1 4 . . . . . 
+                . . . . 4 4 4 1 1 4 4 . . . . . 
+                . . . . 4 . 4 4 4 4 . 4 . . . . 
+                . . . . 4 . 4 4 4 4 4 . . . . . 
+                . . . . . 4 4 . 4 . 4 . . . . . 
+                . . . . . 4 . . . 4 . . . . . . 
+                . . . . . . . 4 . . . . . . . . 
+                . . . . . . . 4 . . . . . . . . 
+                `, MINOTAUR, 0, -50)
+            projectile2 = sprites.createProjectileFromSprite(img`
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . 4 . . . . . . . . . . 
+                . . . 4 4 . 4 4 4 4 . . . . . . 
+                . . 4 . 4 4 4 1 1 4 4 . . . . . 
+                . . . 4 4 4 1 1 1 1 4 . . . . . 
+                4 4 . . 4 4 1 1 1 1 4 . . . . . 
+                . . . 4 4 4 4 1 1 4 4 . . . . . 
+                . . 4 4 . . 4 4 4 4 . . . . . . 
+                . . . . 4 4 4 . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                `, MINOTAUR, 50, 50)
+            projectile2 = sprites.createProjectileFromSprite(img`
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . 4 4 4 . . . . 
+                . . . . . . 4 4 4 4 . . 4 4 . . 
+                . . . . . 4 4 1 1 4 4 4 4 . . . 
+                . . . . . 4 1 1 1 1 4 4 . . 4 4 
+                . . . . . 4 1 1 1 1 4 4 4 . . . 
+                . . . . . 4 4 1 1 4 4 4 . 4 . . 
+                . . . . . . 4 4 4 4 . 4 4 . . . 
+                . . . . . . . . . . 4 . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                `, MINOTAUR, -50, -50)
+            projectile2 = sprites.createProjectileFromSprite(img`
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . 4 . . . . . 
+                . . . . . . 4 4 4 4 . 4 4 . . . 
+                . . . . . 4 4 1 1 4 4 4 . 4 . . 
+                . . . . . 4 1 1 1 1 4 4 4 . . . 
+                . . . . . 4 1 1 1 1 4 4 . . 4 4 
+                . . . . . 4 4 1 1 4 4 4 4 . . . 
+                . . . . . . 4 4 4 4 . . 4 4 . . 
+                . . . . . . . . . 4 4 4 . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                `, MINOTAUR, -50, 50)
+            projectile2 = sprites.createProjectileFromSprite(img`
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . 4 . . . . . . . . . . 
+                . . . 4 4 . 4 4 4 4 . . . . . . 
+                . . 4 . 4 4 4 1 1 4 4 . . . . . 
+                . . . 4 4 4 1 1 1 1 4 . . . . . 
+                4 4 . . 4 4 1 1 1 1 4 . . . . . 
+                . . . 4 4 4 4 1 1 4 4 . . . . . 
+                . . 4 4 . . 4 4 4 4 . . . . . . 
+                . . . . 4 4 4 . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                `, MINOTAUR, 50, -50)
+        }
+    }
+})
 forever(function () {
 	
 })
@@ -1866,34 +2106,34 @@ forever(function () {
                 . . . . . . . . . . . . . . . 
                 . . . . . . . . . . . . . . . 
                 . . . . . . . . . . . . . . . 
-                . . . 7 7 7 7 7 . . . . . . . 
-                . . 7 7 1 7 7 7 7 . . . . . . 
-                . . 7 7 7 7 7 7 7 . . . . . . 
-                . . . 6 8 8 8 7 7 . . . . . . 
-                . . . . . 8 7 7 6 . . . . . . 
-                . . . . 7 7 7 7 6 . . . . . . 
-                . . . 7 7 7 7 6 . . . . . . . 
-                . . 7 7 7 7 8 . . . . . . . . 
-                . . 7 7 7 8 . . . . . . . . 7 
-                . . 7 7 7 7 6 . . . . . . 7 7 
-                . . 6 7 7 7 7 7 7 7 7 7 7 7 6 
-                . . 8 6 7 7 7 7 7 7 7 7 7 8 . 
-                `,img`
-                . . . . . . . . 8 6 . . 6 6 . 
-                . 8 8 . . 8 8 . . 8 8 . . . . 
-                . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . 
-                . . . . . . 7 7 7 7 7 . . . . 
-                . . . . . 7 7 1 7 7 7 7 . . . 
-                . . . . . 7 7 7 7 7 7 7 . . . 
-                . . . . . . 6 8 8 8 7 7 . . . 
-                . . . . . . . . 8 7 7 6 . . . 
+                . . . . . . . 7 7 7 7 7 . . . 
+                . . . . . . 7 7 1 7 7 7 7 . . 
+                . . . . . . 7 7 7 7 7 7 7 . . 
+                . . . . . . . 6 8 8 8 7 7 . . 
+                . . . . . . . . . 8 7 7 6 . . 
+                . . . . . . . . 7 7 7 7 6 . . 
                 . . . . . . . 7 7 7 7 6 . . . 
-                . . . . . . 7 7 7 7 6 . . . . 
-                . . . . . 7 7 7 7 8 . . . . . 
-                . . . . 7 7 7 7 8 . . . . . . 
-                7 . . . 7 7 7 6 . . . . . . 7 
-                7 . . . 7 7 7 7 7 7 7 7 7 7 . 
+                . . . . . . 7 7 7 7 8 . . . . 
+                . . . . . . 7 7 7 8 . . . . . 
+                . . . 7 . . 7 7 7 7 6 . . . . 
+                . . 7 7 . . 6 7 7 7 7 7 7 7 7 
+                7 7 7 6 . . 8 6 7 7 7 7 7 7 . 
+                `,img`
+                7 7 . . 7 8 . . . . . . . . . 
+                . 8 6 . . 6 6 . . 8 8 . . 8 8 
+                . . 8 8 . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . 7 
+                7 7 7 7 . . . . . . . . . 7 7 
+                1 7 7 7 7 . . . . . . . . 7 7 
+                7 7 7 7 7 . . . . . . . . . 6 
+                8 8 8 7 7 . . . . . . . . . . 
+                . 8 7 7 6 . . . . . . . . . . 
+                7 7 7 7 6 . . . . . . . . . 7 
+                7 7 7 6 . . . . . . . . . 7 7 
+                7 7 8 . . . . . . . . . 7 7 7 
+                7 8 . . . . . . 7 . . . 7 7 7 
+                6 . . . . . . 7 7 . . . 7 7 . 
                 `],
             100,
             true
@@ -2085,31 +2325,35 @@ forever(function () {
     }
 })
 forever(function () {
-    if (collarfull == 1) {
-        music.setTempo(170)
-        for (let index = 0; index < 1; index++) {
-            music.playTone(440, music.beat(BeatFraction.Whole))
-            music.rest(music.beat(BeatFraction.Half))
-            music.playTone(370, music.beat(BeatFraction.Whole))
-            music.rest(music.beat(BeatFraction.Half))
-            music.playTone(554, music.beat(BeatFraction.Whole))
-            music.rest(music.beat(BeatFraction.Half))
-            music.playTone(440, music.beat(BeatFraction.Whole))
-            music.rest(music.beat(BeatFraction.Half))
-            music.playTone(330, music.beat(BeatFraction.Whole))
-            music.rest(music.beat(BeatFraction.Whole))
+    if (odetosleep == 1) {
+        music.setTempo(150)
+        for (let index = 0; index < 2; index++) {
+            music.playTone(247, music.beat(BeatFraction.Half))
+            music.playTone(330, music.beat(BeatFraction.Quarter))
+            music.playTone(247, music.beat(BeatFraction.Half))
+            music.playTone(330, music.beat(BeatFraction.Quarter))
+            music.playTone(370, music.beat(BeatFraction.Quarter))
+            music.playTone(392, music.beat(BeatFraction.Quarter))
+            music.playTone(440, music.beat(BeatFraction.Half))
+            music.playTone(392, music.beat(BeatFraction.Quarter))
+            music.playTone(370, music.beat(BeatFraction.Quarter))
+            music.playTone(330, music.beat(BeatFraction.Half))
+            music.playTone(247, music.beat(BeatFraction.Half))
+            music.playTone(330, music.beat(BeatFraction.Half))
         }
-        for (let index = 0; index < 1; index++) {
-            music.playTone(370, music.beat(BeatFraction.Whole))
-            music.rest(music.beat(BeatFraction.Half))
-            music.playTone(294, music.beat(BeatFraction.Whole))
-            music.rest(music.beat(BeatFraction.Half))
-            music.playTone(440, music.beat(BeatFraction.Whole))
-            music.rest(music.beat(BeatFraction.Half))
-            music.playTone(370, music.beat(BeatFraction.Whole))
-            music.rest(music.beat(BeatFraction.Half))
-            music.playTone(247, music.beat(BeatFraction.Whole))
-            music.rest(music.beat(BeatFraction.Whole))
+        for (let index = 0; index < 2; index++) {
+            music.playTone(262, music.beat(BeatFraction.Half))
+            music.playTone(330, music.beat(BeatFraction.Quarter))
+            music.playTone(262, music.beat(BeatFraction.Half))
+            music.playTone(330, music.beat(BeatFraction.Quarter))
+            music.playTone(370, music.beat(BeatFraction.Quarter))
+            music.playTone(392, music.beat(BeatFraction.Quarter))
+            music.playTone(440, music.beat(BeatFraction.Half))
+            music.playTone(392, music.beat(BeatFraction.Quarter))
+            music.playTone(370, music.beat(BeatFraction.Quarter))
+            music.playTone(330, music.beat(BeatFraction.Half))
+            music.playTone(262, music.beat(BeatFraction.Half))
+            music.playTone(330, music.beat(BeatFraction.Half))
         }
     }
 })
